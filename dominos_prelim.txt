@@ -10,19 +10,28 @@ enter_hand()
 - Check for duplicate dominoes in the hand
 - Return array of dominos
 
-calculate_best_route()
-- Array of options
-- Option is an array of turns
-- Turn is an array of dominos
-- Domino is an array of two numbers
-- Consider only dots when prioritizing options
-- Return array of dominos
+calculate_routes()
+- Returns an array of arrays of dominos. Example:
+    [
+        [
+            [3,4],[4,12],[12,2]
+        ]
+    ]
+- An array of dominos is a possible route
+
+prioritize_routes()
+- Takes in the array of routes
+- Prioritizes the routes based on which one has the most domino dots
+- Sends the best route to print_route()
 
 print_route()
+- Prints a route (an array of dominos).
 
 Global Variables
-- hand
+- hand: array of dominos that was set by enter_hand()
 
+Data Structures:
+- Domino: Array of 2 integers, where 0 represents blank dots.
 
 
 
