@@ -1,0 +1,31 @@
+Dominos
+
+enter_starting_domino()
+- Enter the starting domino
+
+enter_hand()
+- Enter domino separated by comma
+- Enter nothing to finish
+- Check each domino input 
+- Check for duplicate dominoes in the hand
+- Return array of dominos
+
+calculate_best_route()
+- Array of options
+- Option is an array of turns
+- Turn is an array of dominos
+- Domino is an array of two numbers
+- Consider only dots when prioritizing options
+- Return array of dominos
+
+print_route()
+
+Global Variables
+- hand
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LATER VERSION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Doubles are counted with a subsequent domino to count one turn
