@@ -15,10 +15,30 @@ def calculate_routes(route, remaining_hand):
             route_copy.append(domino_copy)
             calculate_routes(route_copy, remaining_hand_copy)
     if route_terminated:
-        options.append(route.copy())
+        routes.append(route.copy())
 
-options = []
+def get_scored_routes():
+    scored_routes = {}
+
+    for route in routes:
+        score = 0
+        for domino in route:
+            for number in domino:
+                score += number
+        scored_routes[score] = route
+
+    return scored_routes
+
+routes = []
 hand = [[3,12],[3,4],[3,10],[10,5],[5,0],[12,10],[12,11]]
 calculate_routes([[3,3]], hand)
+print("all possible routes")
 pp = pprint.PrettyPrinter(indent=4)
-pp.pprint(options)
+pp.pprint(routes)
+
+scored_routes = get_scored_routes()
+print("scored routes")
+pp.pprint(scored_routes)
+
+print("route with the most dots")
+pp.pprint(scored_routes[max(scored_routes, key=int)])
