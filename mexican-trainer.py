@@ -1,5 +1,7 @@
 import pprint
 
+# Resursively calculates all possible routes given a hand and a starting
+# domino.
 def calculate_routes(route, remaining_hand):
     last_number = route[-1][1]
     route_terminated = True
@@ -17,6 +19,8 @@ def calculate_routes(route, remaining_hand):
     if route_terminated:
         routes.append(route.copy())
 
+# Returns a dict of domino routes, where the key is a count of the dots in the
+# route.
 def get_scored_routes():
     scored_routes = {}
 
@@ -50,9 +54,20 @@ def get_scored_routes():
 def count_doubles(route):
     return len([domino for domino in route if domino[0] == domino[1]])
 
+def the_whole_domino_set():
+    dominos = []
+    for left_num in range(13):
+        for right_num in range(13):
+            dominos.append([left_num, right_num])
+
+    print("all dominos: " + str(dominos))
+    return dominos
+
 routes = []
-hand = [[3,12],[3,4],[3,10],[10,5],[5,0],[4,10],[10,11],[12,10],[12,11],[12,12],[333,333]]
+hand = [[3,12],[3,4],[3,10],[10,5],[5,0],[4,10],[10,11],[12,10],[12,11],[12,12],[4,9],[9,5],[12,3],[11,6],[11,5],[4,7]]
+
 calculate_routes([[3,3]], hand)
+#calculate_routes([[3,3]], the_whole_domino_set())
 print("all possible routes")
 pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(routes)
@@ -63,5 +78,5 @@ scored_routes = get_scored_routes()
 print("scored routes")
 pp.pprint(scored_routes)
 
-print("route with the most dots")
+print("The best route:")
 pp.pprint(scored_routes[max(scored_routes, key=int)])
