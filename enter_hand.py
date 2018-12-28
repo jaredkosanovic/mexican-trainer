@@ -2,9 +2,9 @@
 Project: Domino Trainer
 Name(s): Jared Kosanovic, Julian Kosanovic
 Date: 12/25/2018
-Version: 1
+Version: ??
 Notes: enter_hand() function for project
-
+Doesn't currently work
 """
 #
 def check_int(x): 
@@ -26,29 +26,41 @@ def enter_hand():
 			break
 		#domino=[int(num) for num in domino.split(',')]
 		#
-		domino = [domino.split(',')]
+		domino = domino.split(',')
 		print(domino) #test
-		for i in range(0,2):
-			if check_int(domino[i]) == False: #If input is not an integer, error
+		for i in domino:
+			#print(i) #test
+			if check_int(i) == False: #If input is not an integer, error
 				print("You must enter only integers representing the dots on the domino. Try again.")
-				error_flag == True
+				error_flag = True
 				break #for loop, not while loop
 			else:
-				domino[i] = int(i)
-				print("int")
-				print(domino[i])
-		#
-		for i in range(0,2): #check for value < 0
-			if error_flag == True:
-				break #for loop
-			elif domino[i] < 0: #Value <0 returns error	
-				print("Value must be greater than or equal to 0. Try again.")
-				error_flag == True
-				break
+				i = int(i)
+				#print("int") #test
+				#print(i) #test
+				if i < 0: #Value <0 returns error	
+					print("Value must be greater than or equal to 0. Try again.")
+					error_flag = True
+					break
 		if error_flag == False:	
+			domino=[int(num) for num in domino]
+			print("current domino", domino) #test
+		if domino_list != None: #run if domino_list is not empty to check for duplicates
+			test = []
+			test = domino
+			test.reverse()
+			for j in domino_list:
+				print("j", j) #test last
+				print("test", test) #test
+				#print("reverse test", test.reverse()) #test
+				if j == domino or j == test: #if duplicate
+					print("That domino is already in the list. Try again.")
+					error_flag = True
+		if error_flag == False: #Everything is fine, put the domino in the list
+			print(domino, "added to list")
 			domino_list.append(domino)
 		#print(domino) #test
-	#print(domino_list) #test
+	print("domino list", domino_list) #test
 	#Check each domino input 
 	#Check for duplicate dominoes in the hand
 	#Return array of dominos
